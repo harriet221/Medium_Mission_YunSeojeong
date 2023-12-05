@@ -16,8 +16,14 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String title;
     private String content;
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
     // private Member author;
+
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

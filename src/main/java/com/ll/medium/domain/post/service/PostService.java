@@ -12,6 +12,11 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
+    public Post write(String title, String content) {
+        Post post = new Post(title, content);
+        return post;
+    }
+
     public List<Post> getList() {
         return postRepository.getList();
     }
