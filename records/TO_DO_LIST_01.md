@@ -3,6 +3,14 @@
 
 -----
 
+commit message:
+- no entity func : ACTION
+- README : ACTION
+
+ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경
+
+-----
+
 ## 필수 미션 1 : 회원기능
 ### 엔드 포인트
 
