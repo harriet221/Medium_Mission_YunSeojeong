@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class PostRepository {
@@ -22,5 +24,17 @@ public class PostRepository {
 
     public List<Post> getList() {
         return postList;
+    }
+
+    public List<Post> getRecentList() {
+        List<Post> sortedList = postList.stream()
+                .sorted(Comparator.comparing(Post::getCreateDate).reversed())
+                .collect(Collectors.toList());
+
+        List<Post> recentList = sortedList.stream()
+                .limit(30)
+                .collect(Collectors.toList());
+
+        return recentList;
     }
 }

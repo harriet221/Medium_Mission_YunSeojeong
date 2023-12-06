@@ -22,6 +22,13 @@ public class PostController {
     private final PostService postService;
     private final MemberService memberService;
 
+    @GetMapping("/main")
+    public String main(Model model) {
+        List<Post> postRecent = this.postService.getRecentList();
+        model.addAttribute("postRecent", postRecent);
+        return "recent_list";
+    }
+
     @GetMapping("/write")
     public String write() {
         return "post/write";

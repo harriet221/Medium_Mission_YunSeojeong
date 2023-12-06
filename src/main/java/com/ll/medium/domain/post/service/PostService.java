@@ -20,4 +20,8 @@ public class PostService {
     public List<Post> getList() {
         return postRepository.getList();
     }
+
+    public List<Post> getRecentList() {
+        return postRepository.getRecentList();
+    }
 }
