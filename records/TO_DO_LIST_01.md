@@ -7,7 +7,7 @@ commit message:
 - no entity func : ACTION
 - README : ACTION
 
-ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경
+ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진척도 체크
 
 -----
 
@@ -41,7 +41,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경
 ## 필수 미션 2 : 글 CRUD
 ### 엔드 포인트
 
-- [ ] 홈
+- [x] 홈
   - GET / : 홈
     - 최신글 30개 노출
 
