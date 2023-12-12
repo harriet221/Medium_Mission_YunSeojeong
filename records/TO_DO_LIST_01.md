@@ -121,4 +121,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 - original repo 복귀 / demo 파일 전부 copy & paste
 - 지금까지의 진척도 테스트 완료
 - 테스트 데이터 넣는 게 안돼서 수동으로 넣음...
-- 
+- Jump to Springboot 방식의 URL 필수미션 요구사항 반영해 변경
+  - post/detail/id → post/id
+  - post/modify/id → post/id/modify
+  - post/delete/id → post/id/delete
+  - comment도 마찬가지
