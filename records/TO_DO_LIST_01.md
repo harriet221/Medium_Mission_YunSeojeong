@@ -89,7 +89,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 ## Progress Records
 
-### 23.12.06 - demo repo
+### 23.12.06 - original repo
 - 점프 투 스프링부트 기반으로 미션 시작.
 - Post 관련하여 홈(shwMain)과 목록 조회(showList) 연관 기능 구현
 
@@ -116,3 +116,9 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   `GET 메서드에서는 post_form을 보여줄 뿐, PostForm 초기화를 하지 않도록 수정함`
 - 3-10 위 이슈 해결하고 나니까, 게시글 수정시 기존 내용이 보이지 않는 문제 발생 → model은 그대로 사용하되, 기존 제목과 내용을 get으로 받아서 넣은 postForm 객체를 add 하는 것으로 수정해 해결
 - 진척도: ~ 3-10
+
+### 23.12.12 - original repo
+- original repo 복귀 / demo 파일 전부 copy & paste
+- 지금까지의 진척도 테스트 완료
+- 테스트 데이터 넣는 게 안돼서 수동으로 넣음...
+- 
