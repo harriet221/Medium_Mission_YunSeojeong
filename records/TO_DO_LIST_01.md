@@ -49,7 +49,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - GET /post/list : 전체 글 리스트
     - 공개된 글만 노출
 
-- [ ] 내 글 목록 조회
+- [x] 내 글 목록 조회
   - GET /post/myList : 내 글 리스트
 
 - [x] 글 상세내용 조회
