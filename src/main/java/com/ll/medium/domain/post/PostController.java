@@ -40,6 +40,35 @@ public class PostController {
         return "post_list";
     }
 
+    @GetMapping("/myList")
+    public String showMyList(Model model,
+                             @RequestParam(value="page", defaultValue="0") int page,
+                             Principal principal) {
+        if(principal == null) {
+
+        }
+        Member me = this.memberService.getUser(principal.getName());
+        Page<Post> paging = this.postService.getMyList(page, me);
+        model.addAttribute("paging", paging);
+        return "post_list";
+    }
+
+//    @GetMapping("/b/{user}")
+//    public String showYourList(Model model,
+//                           @RequestParam(value="page", defaultValue="0") int page) {
+//        Page<Post> paging = this.postService.getList(page);
+//        model.addAttribute("paging", paging);
+//        return "post_list";
+//    }
+//
+//    @GetMapping("/b/{user}/{id}")
+//    public String showYour(Model model,
+//                             @RequestParam(value="page", defaultValue="0") int page) {
+//        Page<Post> paging = this.postService.getList(page);
+//        model.addAttribute("paging", paging);
+//        return "post_list";
+//    }
+
     @GetMapping(value = "/{id}")
     public String detail(Model model,
                          @PathVariable("id") Integer id,
@@ -63,6 +92,9 @@ public class PostController {
 
         @NotBlank(message="내용을 입력하세요.")
         private String content;
+
+//        TODO: 공개 여부 체크
+//         private boolean isPublished;
     }
 
     @PreAuthorize("isAuthenticated()")
