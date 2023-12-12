@@ -19,11 +19,11 @@
                 </div>
             </div>
             <div class="my-3">
-                <a th:href="@{|/post/modify/${post.id}|}" class="btn btn-sm btn-outline-dark"
+                <a th:href="@{|/post/${post.id}/modify|}" class="btn btn-sm btn-outline-dark"
                    sec:authorize="isAuthenticated()"
                    th:if="${post.author != null and #authentication.getPrincipal().getUsername() == post.author.username}"
                    th:text="'게시글 수정'"></a>
-                <a href="javascript:void(0);" th:data-uri="@{|/post/delete/${post.id}|}"
+                <a href="javascript:void(0);" th:data-uri="@{|/post/${post.id}/delete|}"
                    class="delete btn btn-sm btn-outline-dark" sec:authorize="isAuthenticated()"
                    th:if="${post.author != null and #authentication.getPrincipal().getUsername() == post.author.username}"
                    th:text="'게시글 삭제'"></a>
@@ -48,11 +48,11 @@
                 </div>
             </div>
             <div class="my-3">
-                <a th:href="@{|/comment/modify/${comment.id}|}" class="btn btn-sm btn-outline-dark"
+                <a th:href="@{|/comment/${comment.id}/modify|}" class="btn btn-sm btn-outline-dark"
                    sec:authorize="isAuthenticated()"
                    th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                    th:text="'댓글 수정'"></a>
-                <a href="javascript:void(0);" th:data-uri="@{|/comment/delete/${comment.id}|}"
+                <a href="javascript:void(0);" th:data-uri="@{|/comment/${comment.id}/delete|}"
                    class="delete btn btn-sm btn-outline-dark" sec:authorize="isAuthenticated()"
                    th:if="${comment.author != null and #authentication.getPrincipal().getUsername() == comment.author.username}"
                    th:text="'댓글 삭제'"></a>
@@ -60,7 +60,7 @@
         </div>
     </div>
     <!-- 댓글 작성란 -->
-    <form th:action="@{|/comment/write/${post.id}|}" th:object="${commentForm}" method="post" class="my-3">
+    <form th:action="@{|/comment/${post.id}/write|}" th:object="${commentForm}" method="post" class="my-3">
         <div th:replace="~{form_errors :: formErrorsFragment}"></div>
         <textarea sec:authorize="isAnonymous()" disabled th:field="*{content}" rows="10" class="form-control"></textarea>
         <textarea sec:authorize="isAuthenticated()" th:field="*{content}" rows="10" class="form-control"></textarea>

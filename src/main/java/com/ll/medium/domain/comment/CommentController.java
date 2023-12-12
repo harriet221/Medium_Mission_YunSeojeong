@@ -36,7 +36,7 @@ public class CommentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping("/write/{id}")
+    @PostMapping("/{id}/write")
     public String writeComment(Model model,
                                @PathVariable("id") Integer id,
                                @Valid CommentForm commentForm,
@@ -49,11 +49,11 @@ public class CommentController {
             return "post_detail";
         }
         this.commentService.writeComment(post, commentForm.content, member);
-        return String.format("redirect:/post/detail/%s", id);
+        return String.format("redirect:/post/%s", id);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/modify/{id}")
+    @GetMapping("/{id}/modify")
     public String commentModify(CommentForm commentForm,
                                 @PathVariable("id") Integer id,
                                 Principal principal) {
@@ -66,7 +66,7 @@ public class CommentController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping("/modify/{id}")
+    @PostMapping("/{id}/modify")
     public String commentModify(@Valid CommentForm commentForm,
                                BindingResult bindingResult,
                                @PathVariable("id") Integer id,
@@ -79,11 +79,11 @@ public class CommentController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
         this.commentService.modifyComment(comment, commentForm.getContent());
-        return String.format("redirect:/post/detail/%s", comment.getPost().getId());
+        return String.format("redirect:/post/%s", comment.getPost().getId());
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}/delete")
     public String commentDelete(Principal principal,
                                 @PathVariable("id") Integer id) {
         Comment comment = this.commentService.getComment(id);
@@ -91,6 +91,6 @@ public class CommentController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
         this.commentService.delete(comment);
-        return String.format("redirect:/post/detail/%s", comment.getPost().getId());
+        return String.format("redirect:/post/%s", comment.getPost().getId());
     }
 }

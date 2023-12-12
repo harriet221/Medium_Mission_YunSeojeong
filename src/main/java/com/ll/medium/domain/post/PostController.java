@@ -40,7 +40,7 @@ public class PostController {
         return "post_list";
     }
 
-    @GetMapping(value = "/detail/{id}")
+    @GetMapping(value = "/{id}")
     public String detail(Model model,
                          @PathVariable("id") Integer id,
                          CommentController.CommentForm commentForm) {
@@ -79,7 +79,7 @@ public class PostController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/modify/{id}")
+    @GetMapping("/{id}/modify")
     public String modifyPost(Model model,
                              PostForm postForm,
                              @PathVariable("id") Integer id,
@@ -96,7 +96,7 @@ public class PostController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping("/modify/{id}")
+    @PostMapping("/{id}/modify")
     public String modifyPost(@Valid PostForm postForm,
                              BindingResult bindingResult,
                              Principal principal,
@@ -109,11 +109,11 @@ public class PostController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
         this.postService.modifyPost(post, postForm.getTitle(), postForm.getContent());
-        return String.format("redirect:/post/detail/%s", id);
+        return String.format("redirect:/post/%s", id);
     }
 
     @PreAuthorize("isAuthenticated()")
-    @GetMapping("/delete/{id}")
+    @GetMapping("/{id}/delete")
     public String deletePost(Principal principal,
                              @PathVariable("id") Integer id) {
         Post post = this.postService.getPost(id);
