@@ -34,6 +34,8 @@ public class Post {
     @ManyToOne
     private Member author;
 
+    private Boolean isPublished;
+
     public Post() {}
 
     public Post(String title, String content) {
