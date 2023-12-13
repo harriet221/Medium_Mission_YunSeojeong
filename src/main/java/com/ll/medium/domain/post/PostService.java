@@ -35,6 +35,14 @@ public class PostService {
         return this.postRepository.findByAuthor(pageable, author);
     }
 
+    public Page<Post> getYourList(int page, Member author) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        sorts.add(Sort.Order.asc("title"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        return this.postRepository.findByAuthor(pageable, author);
+    }
+
     public Post getPost(Integer id) {
         Optional<Post> post = this.postRepository.findById(id);
         if(post.isPresent()) {

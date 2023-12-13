@@ -53,23 +53,28 @@ public class PostController {
         return "post_list";
     }
 
-//    @GetMapping("/b/{user}")
-//    public String showYourList(Model model,
-//                           @RequestParam(value="page", defaultValue="0") int page) {
-//        Page<Post> paging = this.postService.getList(page);
-//        model.addAttribute("paging", paging);
-//        return "post_list";
-//    }
-//
-//    @GetMapping("/b/{user}/{id}")
-//    public String showYour(Model model,
-//                             @RequestParam(value="page", defaultValue="0") int page) {
-//        Page<Post> paging = this.postService.getList(page);
-//        model.addAttribute("paging", paging);
-//        return "post_list";
-//    }
+    @GetMapping("/b/{author}")
+    public String showYourList(Model model,
+                               @PathVariable("author") String author,
+                               @RequestParam(value="page", defaultValue="0") int page) {
+        Member user = this.memberService.getUser(author);
+        Page<Post> paging = this.postService.getYourList(page, user);
+        model.addAttribute("paging", paging);
+        return "post_list";
+    }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/b/{author}/{id}")
+    public String showYourPost(Model model,
+                               @PathVariable("author") String author,
+                               @PathVariable("id") Integer id,
+                               CommentController.CommentForm commentForm) {
+        Member user = this.memberService.getUser(author);
+        Post post = this.postService.getPost(id);
+        model.addAttribute("post", post);
+        return "post_detail";
+    }
+
+    @GetMapping("/{id}")
     public String detail(Model model,
                          @PathVariable("id") Integer id,
                          CommentController.CommentForm commentForm) {
