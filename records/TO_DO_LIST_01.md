@@ -67,8 +67,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - DELETE /post/1/delete : 1번 글 삭제
 
 - [ ] 특정 회원의 글 모아보기
-  - [ ] GET /b/user1 : 회원 user1 의 전체 글 리스트
-  - [ ] GET /b/user1/3 : 회원 user1 의 글 중에서 3번글 상세보기
+  - [x] GET /b/user1 : 회원 user1 의 전체 글 리스트
+  - [x] GET /b/user1/3 : 회원 user1 의 글 중에서 3번글 상세보기
 
 ### 폼
 - [ ] 글 쓰기 폼
@@ -126,3 +126,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - post/modify/id → post/id/modify
   - post/delete/id → post/id/delete
   - comment도 마찬가지
+
+### 23.12.13 - original repo
+- 특정 회원의 포스트 목록 보기 완료. 근데 이제 url 조작으로만 가능한... 목록에서 작성자 누르면 통하게 해볼까..?
+  - 리팩토링에서 고민해 보겠음
+- 특정 회원의 포스트 보기에서 포스트 넘버를 어떻게 할지 몰라서 그냥 둠. id는 있지만 해당 유저의 포스트 모아 보기를 했을 때 뜨는 넘버랑은 다른데, 새로 넘버를 부여해야 하는가..?
