@@ -41,7 +41,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 ## 필수 미션 2 : 글 CRUD
 ### 엔드 포인트
 
-- [ ] 홈
+- [x] 홈
   - GET / : 홈
     - 최신글 30개 노출
 
@@ -135,4 +135,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 ### 23.12.14 - original repo
 - 포스트 목록에서 특정 작가명 누르면 해당 작가의 포스트 목록 보기 (/post/b/username) 연결 완료.
-- 
+- showMain 변경
+  - 원래 / → /post/list로 자동 redirection 해 뒀는데, 메인 페이지 따로 제작해서 main으로 보내게 수정.
+  - 포스트 목록 보일 때 한 페이지에 30개씩 보이게 하기 싫었기 때문에...
+  - /로 들어가면 /main으로 연결되어 최신글 30개 보이지만 게시글을 새로 생성하거나 특정 작가의 포스트 검색 불가.
+  - 맨 아래 `전체 목록 보기` 버튼을 누르거나, 네비게이션 바의 `HOME` 누르면 전체 목록인 /post/list로 이동.
