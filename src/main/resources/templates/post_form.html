@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3 form-check">
             <label class="form-check-label" th:for="isPublished">공개</label>
-            <input type="checkbox" th:field="*{isPublished}" class="form-check-input" id="isPublished">
+            <input type="checkbox" th:checked="${postForm.isPublished}" class="form-check-input" id="isPublished" name="isPublished">
         </div>
         <input type="submit" value="저장" class="btn btn-dark my-2">
     </form>

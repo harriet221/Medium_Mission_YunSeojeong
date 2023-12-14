@@ -6,6 +6,7 @@ import com.ll.medium.domain.member.MemberService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -90,6 +91,7 @@ public class PostController {
     }
 
     @Data
+    @Builder
     public static class PostForm {
         @NotBlank(message="제목을 입력하세요.")
         @Size(max=200)
@@ -98,7 +100,8 @@ public class PostController {
         @NotBlank(message="내용을 입력하세요.")
         private String content;
 
-        private Boolean isPublished;
+        @Builder.Default
+        private Boolean isPublished = true;
     }
 
     @PreAuthorize("isAuthenticated()")

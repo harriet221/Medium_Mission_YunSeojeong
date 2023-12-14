@@ -36,10 +36,4 @@ public class Post {
 
     private Boolean isPublished;
 
-    public Post() {}
-
-    public Post(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 }
