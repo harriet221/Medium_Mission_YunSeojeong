@@ -29,8 +29,11 @@ public class PostController {
     private final MemberService memberService;
 
     @GetMapping("/main")
-    public String showMain() {
-        return "redirect:/post/list";
+    public String showMain(Model model,
+                           @RequestParam(value="page", defaultValue="0") int page) {
+        Page<Post> paging = this.postService.getRecent(page);
+        model.addAttribute("paging", paging);
+        return "main";
     }
 
     @GetMapping("/list")
@@ -160,6 +163,6 @@ public class PostController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
         this.postService.deletePost(post);
-        return "redirect:/";
+        return "redirect:/post/list";
     }
 }

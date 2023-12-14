@@ -19,11 +19,19 @@ import java.util.Optional;
 public class PostService {
     private final PostRepository postRepository;
 
+    public Page<Post> getRecent(int page) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        sorts.add(Sort.Order.asc("title"));
+        Pageable pageable = PageRequest.of(page, 30, Sort.by(sorts));
+        return this.postRepository.findAll(pageable);
+    }
+
     public Page<Post> getList(int page) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
         sorts.add(Sort.Order.asc("title"));
-        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        Pageable pageable = PageRequest.of(page, 12, Sort.by(sorts));
         return this.postRepository.findAll(pageable);
     }
 
