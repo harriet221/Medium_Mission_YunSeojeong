@@ -61,29 +61,29 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 - [x] 글 수정
   - [x] GET /post/1/modify : 1번 글 수정 폼
-  - [ ] PUT /post/1/modify : 1번 글 수정 폼 처리
+  - [x] PUT /post/1/modify : 1번 글 수정 폼 처리 (△ : PUT은 모르겠고 일단 POST로 구현)
 
 - [x] 글 삭제
   - DELETE /post/1/delete : 1번 글 삭제
 
-- [ ] 특정 회원의 글 모아보기
+- [x] 특정 회원의 글 모아보기
   - [x] GET /b/user1 : 회원 user1 의 전체 글 리스트
-  - [x] GET /b/user1/3 : 회원 user1 의 글 중에서 3번글 상세보기
+  - [x] GET /b/user1/3 : 회원 user1 의 글 중에서 3번글 상세보기 (△ : 새롭게 구성된 목록 번호 아니고 원래 id로 구현)
 
 ### 폼
-- [ ] 글 쓰기 폼
+- [x] 글 쓰기 폼
     - title
     - body
     - isPublished
       - 체크박스
-      - value="true"
+      - value="true" (△)
 
-- [ ] 글 수정 폼
+- [x] 글 수정 폼
   - title
   - body
   - isPublished
     - 체크박스
-    - value="true"
+    - value="true" (△)
 
 ---
 
@@ -129,6 +129,10 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 ### 23.12.13 - original repo
 - 특정 회원의 포스트 목록 보기 완료. 근데 이제 url 조작으로만 가능한... 목록에서 작성자 누르면 통하게 해볼까..?
-  - 리팩토링에서 고민해 보겠음
+  - ~~리팩토링에서 고민해 보겠음~~
 - 특정 회원의 포스트 보기에서 포스트 넘버를 어떻게 할지 몰라서 그냥 둠. id는 있지만 해당 유저의 포스트 모아 보기를 했을 때 뜨는 넘버랑은 다른데, 새로 넘버를 부여해야 하는가..?
 - isPublished 체크박스 구현. 그런데 이제 기능은 없는... 값이 저장되지는 않는...
+
+### 23.12.14 - original repo
+- 포스트 목록에서 특정 작가명 누르면 해당 작가의 포스트 목록 보기 (/post/b/username) 연결 완료.
+- 
