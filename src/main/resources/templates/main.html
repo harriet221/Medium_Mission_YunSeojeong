@@ -1,0 +1,30 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <h2>MAIN HOME - RECENT POSTS</h2>
+
+    <table class="table">
+        <thead class="table-dark">
+        <tr class="text-center">
+            <th>최신순</th>
+            <th style="width:35%">제목</th>
+            <th>작성자</th>
+            <th>작성 일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="post, loop : ${paging}">
+            <td th:text="${loop.index + 1}"></td>
+            <td class="text-start">
+                <a th:href="@{|/post/${post.id}|}"
+                   th:text="${post.title}"></a>
+            </td>
+            <td>
+                <div th:if="${post.author != null}" th:text="${post.author.username}"></div>
+            </td>
+            <td th:text="${#temporals.format(post.createDate, 'yy년 MM월 dd일 a hh:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/post/list}" class="btn btn-outline-dark">전체 목록 보기</a>
+</div>
+</html>
