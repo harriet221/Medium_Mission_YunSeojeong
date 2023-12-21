@@ -1,30 +1,47 @@
 <html layout:decorate="~{layout}">
+<head>
+    <style>
+        .card {
+            margin: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            background: lightgrey;
+        }
+        .card:hover {
+            background-color: darkgrey;
+            transition: background-color 0.3s ease;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            color: black;
+        }
+        #date {
+            font-size: small;
+        }
+        .showlist {
+            margin-top: 10px;
+        }
+    </style>
+</head>
 <div layout:fragment="content" class="container my-3">
     <h2>MAIN HOME - RECENT POSTS</h2>
 
-    <table class="table">
-        <thead class="table-dark">
-        <tr class="text-center">
-            <th>최신순</th>
-            <th style="width:35%">제목</th>
-            <th>작성자</th>
-            <th>작성 일시</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="text-center" th:each="post, loop : ${paging}">
-            <td th:text="${loop.index + 1}"></td>
-            <td class="text-start">
-                <a th:href="@{|/post/${post.id}|}"
-                   th:text="${post.title}"></a>
-            </td>
-            <td>
-                <div th:if="${post.author != null}" th:text="${post.author.username}"></div>
-            </td>
-            <td th:text="${#temporals.format(post.createDate, 'yy년 MM월 dd일 a hh:mm')}"></td>
-        </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/post/list}" class="btn btn-outline-dark">전체 목록 보기</a>
+    <div class="row">
+        <h5>최신순</h5>
+        <div class="col-md-4" th:each="post : ${paging}">
+            <div class="card">
+                <a class="card-body" th:href="@{|/post/${post.id}|}">
+                    <h5 class="card-title" th:text="${post.title}"></h5>
+                    <p class="card-text text-end">
+                        <span th:text="${post.author != null} ? ${post.author.username} : '익명'"></span>
+                    </p>
+                    <p class="card-text" id="date" th:text="${#temporals.format(post.createDate, 'yy년 MM월 dd일 a hh:mm')}"></p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/post/list}" class="btn btn-outline-dark showlist">전체 목록 보기</a>
 </div>
 </html>
