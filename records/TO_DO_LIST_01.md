@@ -145,3 +145,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - chatGPT 소견(?)으로는 타임리프 이상인 것 같다고 하여 `th:checked="{postForm.isPublished}"`에서 
   th 빼고 `checked="{postForm.isPublished}"`로 수정했더니 체크된 상태가 디폴트로 나오긴 했으나,
   타임리프 없이 값 전달이 되는지 의문이 남았다... 값 반영... 타임리프 없이 되는가...
+
+### 23.12.21 ~ 24 - refactoring
+- 21일 : /post/main의 목록 형식을 카드 형식으로 변경. 생각치 못하다가 코드 리뷰에서 아이디어 차용.
+  - `main.html`의 기본 템플릿은 chatGPT 통해 작성하고, css 위주로 약간 변형함.
