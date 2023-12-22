@@ -153,3 +153,4 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - 앞선 CSS를 stylesheet으로 따로 분리, 그 과정에서 class 따로 지정해서 style 적용하도록 변경.
   - [눈누](https://noonnu.cc/) 통해서 [스위트](https://noonnu.cc/font_page/1150) 폰트 적용
   - 각 페이지 제목 꾸미기
+  - 모든 a 태그 링크 스타일 변경 (파란색 → 검은색, 밑줄 삭제, 글씨 두께 변화로 hover 효과)
