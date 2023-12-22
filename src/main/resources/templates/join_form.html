@@ -1,11 +1,8 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-    <h2>JOIN</h2>
-    <div class="my-3 border-bottom">
-        <div>
-            <h4>회원가입</h4>
-        </div>
-    </div>
+    <h2 class="pageName my-4 border-bottom">
+        JOIN ◇ 회원가입
+    </h2>
     <form th:action="@{/member/join}" th:object="${memberJoinForm}" method="post">
         <div th:replace="~{form_errors :: formErrorsFragment}"></div>
         <div class="mb-3">

@@ -1,6 +1,8 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-    <h2>LOGIN</h2>
+    <h2 class="pageName my-4 border-bottom">
+        LOGIN ◇ 로그인
+    </h2>
     <form th:action="@{/member/login}" method="post">
         <div th:if="${param.error}">
             <div class="alert alert-dark">
