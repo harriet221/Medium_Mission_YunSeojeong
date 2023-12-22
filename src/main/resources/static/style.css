@@ -1,0 +1,22 @@
+.mainCard {
+    margin: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: lightgrey;
+}
+.mainCard:hover {
+    background-color: darkgrey;
+    transition: background-color 0.3s ease;
+}
+.mainCard a {
+    text-decoration: none;
+}
+.mainCard a:hover {
+    color: black;
+}
+#date {
+    font-size: small;
+}
+.showList {
+    margin-top: 10px;
+}

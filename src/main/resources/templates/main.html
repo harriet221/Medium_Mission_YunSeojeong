@@ -1,37 +1,11 @@
 <html layout:decorate="~{layout}">
-<head>
-    <style>
-        .card {
-            margin: 10px;
-            margin-left: 5px;
-            margin-right: 5px;
-            background: lightgrey;
-        }
-        .card:hover {
-            background-color: darkgrey;
-            transition: background-color 0.3s ease;
-        }
-        a {
-            text-decoration: none;
-        }
-        a:hover {
-            color: black;
-        }
-        #date {
-            font-size: small;
-        }
-        .showlist {
-            margin-top: 10px;
-        }
-    </style>
-</head>
 <div layout:fragment="content" class="container my-3">
     <h2>MAIN HOME - RECENT POSTS</h2>
 
     <div class="row">
         <h5>최신순</h5>
         <div class="col-md-4" th:each="post : ${paging}">
-            <div class="card">
+            <div class="card mainCard">
                 <a class="card-body" th:href="@{|/post/${post.id}|}">
                     <h5 class="card-title" th:text="${post.title}"></h5>
                     <p class="card-text text-end">
@@ -42,6 +16,6 @@
             </div>
         </div>
     </div>
-    <a th:href="@{/post/list}" class="btn btn-outline-dark showlist">전체 목록 보기</a>
+    <a th:href="@{/post/list}" class="btn btn-outline-dark showList">전체 목록 보기</a>
 </div>
 </html>
