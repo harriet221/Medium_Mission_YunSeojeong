@@ -149,5 +149,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 ### 23.12.21 ~ 24 - refactoring
 - 21일 : /post/main의 목록 형식을 카드 형식으로 변경. 생각치 못하다가 코드 리뷰에서 아이디어 차용.
   - `main.html`의 기본 템플릿은 chatGPT 통해 작성하고, css 위주로 약간 변형함.
-- 22일 : 전반적인 꾸미기 작업. 테일윈드 + 데이지UI + 어썸폰트 적용 시도.
+- 22일 : 전반적인 꾸미기 작업. ~~테일윈드 + 데이지UI + 어썸폰트 적용 시도~~ 일단은 부트스트랩 유지.
   - 앞선 CSS를 stylesheet으로 따로 분리, 그 과정에서 class 따로 지정해서 style 적용하도록 변경.
+  - [눈누](https://noonnu.cc/) 통해서 [스위트](https://noonnu.cc/font_page/1150) 폰트 적용
+  - 각 페이지 제목 꾸미기
