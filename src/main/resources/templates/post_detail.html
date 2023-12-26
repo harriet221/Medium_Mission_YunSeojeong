@@ -1,8 +1,10 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
-    <h2>DETAIL</h2>
+    <h2 class="pageName my-4 border-bottom text-center">
+        DETAIL ◇ 글 상세보기
+    </h2>
     <!-- 게시물 -->
-    <h3 class="border-bottom py-2" th:text="${post.title}"></h3>
+    <h3 class="py-2" th:text="${post.title}"></h3>
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;" th:text="${post.content}"></div>
