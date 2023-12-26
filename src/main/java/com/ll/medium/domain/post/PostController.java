@@ -6,7 +6,6 @@ import com.ll.medium.domain.member.MemberService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -94,7 +93,6 @@ public class PostController {
     }
 
     @Data
-    @Builder
     public static class PostForm {
         @NotBlank(message="제목을 입력하세요.")
         @Size(max=200)
@@ -103,8 +101,7 @@ public class PostController {
         @NotBlank(message="내용을 입력하세요.")
         private String content;
 
-        @Builder.Default
-        private Boolean isPublished = true;
+        private Boolean isPublished;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -116,7 +113,7 @@ public class PostController {
             return "post_form";
         }
         Member member = this.memberService.getUser(principal.getName());
-        this.postService.writePost(postForm.title, postForm.content, member);
+        this.postService.writePost(postForm.title, postForm.content, member, postForm.isPublished);
         return "redirect:/post/list";
     }
 
@@ -150,7 +147,7 @@ public class PostController {
         if (!post.getAuthor().getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
-        this.postService.modifyPost(post, postForm.getTitle(), postForm.getContent());
+        this.postService.modifyPost(post, postForm.getTitle(), postForm.getContent(), postForm.getIsPublished());
         return String.format("redirect:/post/%s", id);
     }
 
