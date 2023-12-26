@@ -101,7 +101,7 @@ public class PostController {
         @NotBlank(message="내용을 입력하세요.")
         private String content;
 
-        private Boolean isPublished;
+        private Boolean isPublished = true;
     }
 
     @PreAuthorize("isAuthenticated()")
