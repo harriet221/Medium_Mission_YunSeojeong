@@ -40,3 +40,10 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 ### ~ 23.12.24
 - First 작업 + refactoring : [first period README](TO_DO_LIST_01.md)
+
+### 23.12.26
+- first 부분 작업중 안됐던 부분 해결
+  - isPublished DB에 반영 안 되었던 부분 해결
+  - h2-console 로그인에서 JDBC URL에 jdbc:h2/local을 넣어서 생긴 문제. 이전에 Jump To SpringBoot 기반으로 만들면서 거기서 설정했던 DB URL을 그대로 썼더니 그런 모양.
+  - JDBC URL에 jdbc:h2:./medium_dev;MODE=MYSQL (application.yml의 URL)을 넣고 로그인하니 해결되었다. (feat. 우철승 멘토님)
+  - 다만, checkbox에 체크 되어있는 (true) 모양을 디폴트 값으로 놓으려고 했는데 그 부분은 실패함.
