@@ -48,7 +48,7 @@ public class PostService {
         sorts.add(Sort.Order.desc("createDate"));
         sorts.add(Sort.Order.asc("title"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return this.postRepository.findByAuthorIsPublished(pageable, author.getUsername());
+        return this.postRepository.findByAuthorIsPublished(pageable, author);
     }
 
     public Post getPost(Integer id) {

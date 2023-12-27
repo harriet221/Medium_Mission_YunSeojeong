@@ -28,7 +28,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
             + "from Post p "
             + "left outer join Member m1 on p.author=m1 "
             + "where p.isPublished=true "
-            + "and (m1.username = :user)")
-    Page<Post> findByAuthorIsPublished(Pageable pageable, @Param("user") String author);
+            + "and (m1 = :user)")
+    Page<Post> findByAuthorIsPublished(Pageable pageable, @Param("user") Member author);
 
 }
