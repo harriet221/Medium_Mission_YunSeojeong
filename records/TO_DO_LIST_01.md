@@ -47,7 +47,7 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 
 - [x] 글 목록 조회
   - GET /post/list : 전체 글 리스트
-    - 공개된 글만 노출
+    - 공개된 글만 노출 ~~(△)~~ → second period에서 해결
 
 - [x] 내 글 목록 조회
   - GET /post/myList : 내 글 리스트
@@ -76,14 +76,14 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
     - body
     - isPublished
       - 체크박스
-      - value="true" (△)
+      - value="true" ~~(△)~~ → second period에서 해결
 
 - [x] 글 수정 폼
   - title
   - body
   - isPublished
     - 체크박스
-    - value="true" (△)
+    - value="true" ~~(△)~~ → second period에서 해결
 
 ---
 

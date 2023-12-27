@@ -53,3 +53,12 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - MemberRole에 PAID 값 추가
   - MemberSecurityService에 isPaid가 true인 유저의 경우, USER와 PAID 권한 모두 가지도록 설정
   - 회원으로 가입할 때는 디폴트로 false 값 가지도록 설정
+- Post 관련 목록 보여주는 모든 부분에 isPublished 관련 부분 적용
+  - PostRepository에서 findAll과 findByAuthor 메서드는 **Spring Data JPA에서 제공하는 Query Creation 기능에 의해 자동으로 생성**되는 메소드임.
+  - 그래서 처음에는 PostRepository에서 상속받은 JpaRepository와 Spring을 믿고 findAllIsPublished 등으로 자동 구현되게 하려고 했으나, <br>
+    에러를 여러번 겪고나서 isPublished 관련 find 메서드는 Spring 측에서 자동으로 만들 수 없다는 결론을 내림.
+  - @Query 통해 PostRepository에서 직접 쿼리문을 작성하여 findAllIsPublished, findByAuthorIsPublished 메서드 구현
+  - 결과물 
+    1. showMain과 showList에서는 공개된 post만 보임 (비회원에게도 노출)
+    2. showYourList에서는 해당 저자의 공개된 post만 보임 (비회원에게도 노출)
+    3. showMyList에서는 나의 비공개 + 공개 post 함께 보임 (로그인 했을 때 나에게만 노출)
