@@ -24,7 +24,7 @@ public class PostService {
         sorts.add(Sort.Order.desc("createDate"));
         sorts.add(Sort.Order.asc("title"));
         Pageable pageable = PageRequest.of(page, 15, Sort.by(sorts));
-        return this.postRepository.findAll(pageable);
+        return this.postRepository.findAllIsPublished(pageable);
     }
 
     public Page<Post> getList(int page) {
@@ -32,7 +32,7 @@ public class PostService {
         sorts.add(Sort.Order.desc("createDate"));
         sorts.add(Sort.Order.asc("title"));
         Pageable pageable = PageRequest.of(page, 12, Sort.by(sorts));
-        return this.postRepository.findAll(pageable);
+        return this.postRepository.findAllIsPublished(pageable);
     }
 
     public Page<Post> getMyList(int page, Member author) {
@@ -48,7 +48,7 @@ public class PostService {
         sorts.add(Sort.Order.desc("createDate"));
         sorts.add(Sort.Order.asc("title"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return this.postRepository.findByAuthor(pageable, author);
+        return this.postRepository.findByAuthorIsPublished(pageable, author.getUsername());
     }
 
     public Post getPost(Integer id) {
