@@ -13,8 +13,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 ## 목표 : 멤버십 기능 + 정산 기능 구현
 
 ## 필수 미션 1 : Member 클래스에 private boolean isPaid 필드 추가
-- [ ] 해당 필드가 true 인 사람이 로그인할 때, ROLE_PAID 권한도 가지도록(스프링 시큐리티)
-- [ ] 해당 필드가 true 이면 유료 멤버십 회원 입니다.
+- [x] 해당 필드가 true 인 사람이 로그인할 때, ROLE_PAID 권한도 가지도록(스프링 시큐리티)
+- [x] 해당 필드가 true 이면 유료 멤버십 회원 입니다.
 
 -----
 
@@ -47,3 +47,9 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
   - h2-console 로그인에서 JDBC URL에 jdbc:h2/local을 넣어서 생긴 문제. 이전에 Jump To SpringBoot 기반으로 만들면서 거기서 설정했던 DB URL을 그대로 썼더니 그런 모양.
   - JDBC URL에 jdbc:h2:./medium_dev;MODE=MYSQL (application.yml의 URL)을 넣고 로그인하니 해결되었다. (feat. 우철승 멘토님)
   - ~~다만, checkbox에 체크 되어있는 (true) 모양을 디폴트 값으로 놓으려고 했는데 그 부분은 실패함.~~ 해결 : PostForm에서 isPublished = true로 설정.
+
+### 23.12.27
+- Member 클래스에 isPaid 필드 추가
+  - MemberRole에 PAID 값 추가
+  - MemberSecurityService에 isPaid가 true인 유저의 경우, USER와 PAID 권한 모두 가지도록 설정
+  - 회원으로 가입할 때는 디폴트로 false 값 가지도록 설정
