@@ -36,4 +36,6 @@ public class Post {
 
     private Boolean isPublished;
 
+    private Boolean paid;
+
 }

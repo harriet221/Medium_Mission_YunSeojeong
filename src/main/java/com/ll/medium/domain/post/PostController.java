@@ -102,6 +102,8 @@ public class PostController {
         private String content;
 
         private Boolean isPublished = true;
+
+        private Boolean paid;
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -113,7 +115,7 @@ public class PostController {
             return "post_form";
         }
         Member member = this.memberService.getUser(principal.getName());
-        this.postService.writePost(postForm.title, postForm.content, member, postForm.isPublished);
+        this.postService.writePost(postForm.title, postForm.content, member, postForm.isPublished, postForm.paid);
         return "redirect:/post/list";
     }
 
@@ -147,7 +149,7 @@ public class PostController {
         if (!post.getAuthor().getUsername().equals(principal.getName())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "권한이 없습니다.");
         }
-        this.postService.modifyPost(post, postForm.getTitle(), postForm.getContent(), postForm.getIsPublished());
+        this.postService.modifyPost(post, postForm.getTitle(), postForm.getContent(), postForm.getIsPublished(), postForm.getPaid());
         return String.format("redirect:/post/%s", id);
     }
 

@@ -60,21 +60,23 @@ public class PostService {
         }
     }
 
-    public void writePost(String title, String content, Member author, Boolean isPub) {
+    public void writePost(String title, String content, Member author, Boolean isPub, Boolean paid) {
         Post post = new Post();
         post.setTitle(title);
         post.setContent(content);
         post.setCreateDate(LocalDateTime.now());
         post.setAuthor(author);
         post.setIsPublished(isPub);
+        post.setPaid(paid);
         this.postRepository.save(post);
     }
 
-    public void modifyPost(Post post, String title, String content, Boolean isPub) {
+    public void modifyPost(Post post, String title, String content, Boolean isPub, Boolean paid) {
         post.setTitle(title);
         post.setContent(content);
         post.setModifyDate(LocalDateTime.now());
         post.setIsPublished(isPub);
+        post.setPaid(paid);
         this.postRepository.save(post);
     }
 
