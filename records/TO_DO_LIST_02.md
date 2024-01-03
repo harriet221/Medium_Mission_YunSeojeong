@@ -73,3 +73,6 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
     1. 로그인 하지 않은 비회원
     2. 로그인 했으나 멤버십에 가입하지 않은 회원
   - 예외: 로그인 한 회원이 해당 포스트의 작성자 본인인 경우
+- Sample Data 생성용 클래스 구현
+  - /global/init/NotPod.java
+  - 멤버십 회원 user99와 멤버십 포스트 1~100 생성
