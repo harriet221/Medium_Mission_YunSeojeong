@@ -1,12 +1,15 @@
 package com.ll.medium.domain.post;
 
 import com.ll.medium.domain.member.Member;
+import com.ll.medium.domain.member.MemberRepository;
 import com.ll.medium.global.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -18,6 +21,7 @@ import java.util.Optional;
 @Service
 public class PostService {
     private final PostRepository postRepository;
+    private final MemberRepository memberRepository;
 
     public Page<Post> getRecent(int page) {
         List<Sort.Order> sorts = new ArrayList<>();
@@ -54,7 +58,19 @@ public class PostService {
     public Post getPost(Integer id) {
         Optional<Post> post = this.postRepository.findById(id);
         if(post.isPresent()) {
+            if(post.get().getPaid()) {
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                String currentUsername = authentication.getName();
+                Optional<Member> member = memberRepository.findByUsername(currentUsername);
+                if(member.isPresent() && member.get().isPaid()) {
+                    return post.get();
+                }
+                if(!currentUsername.equals(post.get().getAuthor().getUsername())) {
+                    post.get().setContent("※ 멤버십 포스트 입니다.");
+                }
+            }
             return post.get();
+
         } else {
             throw new DataNotFoundException("post not found");
         }

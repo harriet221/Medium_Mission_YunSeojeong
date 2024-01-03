@@ -20,8 +20,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("select "
             + "distinct p "
             + "from Post p "
-            + "where p.isPublished=true "
-            + "and p.paid!=true ")
+            + "where p.isPublished=true ")
     Page<Post> findAllIsPublished(Pageable pageable);
 
     @Query("select "
