@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3 form-check">
             <label class="form-check-label" th:for="paid">멤버십 포스트</label>
-            <input type="checkbox" th:checked="${post.paid}" class="form-check-input" id="paid" name="paid">
+            <input type="checkbox" th:field="*{paid}" th:checked="${postForm.paid}" class="form-check-input" id="paid" name="paid">
         </div>
         <input type="submit" value="저장" class="btn btn-dark my-2">
     </form>
