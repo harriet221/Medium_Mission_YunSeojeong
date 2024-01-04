@@ -8,7 +8,7 @@
         <div class="col-md-4" th:each="post : ${paging}">
             <div class="card mainCard">
                 <a class="card-body" th:href="@{|/post/${post.id}|}">
-                    <h5 class="card-title" th:text="${post.title}"></h5>
+                    <h5 class="card-title" th:text="${post.title.length() > 9} ? ${post.title.substring(0,7)}+' ...' : ${post.title}"></h5>
                     <p class="card-text text-end">
                         <span th:text="${post.author != null} ? ${post.author.username} : '익명'"></span>
                     </p>
