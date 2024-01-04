@@ -76,3 +76,8 @@ ACTION : CREATE 생성 / MODIFY 수정 / UPDATE 구조 변경 / CHECK 미션 진
 - Sample Data 생성용 클래스 구현
   - /global/init/NotPod.java
   - 멤버십 회원 user99와 멤버십 포스트 1~100 생성
+
+### 24.01.04
+- main.html (/post/main) 카드 모양 통일 위해 제목이 9글자를 넘어가면 6자+' ...'으로 표시되도록  
+  - javascript로 "화면 비율이 스크린의 50%일 때" 라는 조건을 넣으려고 했으나 실패함.
+  - 나중에 시간 나면 다시 시도해 볼 것.
