@@ -23,12 +23,15 @@ a:hover {
     font-weight: bolder;
 }
 
-/* 여기서 부터 각자의 디테일 */
+/* main.html 디테일 */
 .mainCard {
     margin: 10px;
     margin-left: 5px;
     margin-right: 5px;
     background: lightgrey;
+    border-color: darkgrey;
+    border-width: thick;
+    border-radius: 20px;
 }
 .mainCard:hover {
     background-color: darkgrey;

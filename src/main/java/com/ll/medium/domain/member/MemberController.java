@@ -35,6 +35,8 @@ public class MemberController {
 
         @NotBlank(message = "비밀번호를 확인하세요.")
         private String passwordConfirm;
+
+        private boolean isPaid = false;
     }
 
     @PostMapping("/join")

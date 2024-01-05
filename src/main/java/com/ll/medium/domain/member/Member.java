@@ -17,4 +17,7 @@ public class Member {
     private String username;
 
     private String password;
+
+    @Column
+    private boolean isPaid = false;
 }
